@@ -19,6 +19,8 @@ def main():
         except (ValueError, ZeroDivisionError):
             # Handle invalid input or division by zero and re-prompt
             pass
+        except EOFError:
+            break
         
 
 
