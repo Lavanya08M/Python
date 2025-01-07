@@ -3,25 +3,29 @@ import sys
 
 def main():
     try:
-        if len(sys.argv) < 2:
-            sys.exit("Too few command-line arguments")
-        elif len(sys.argv) > 2:
-            sys.exit("Too many command-line arguments")
-        else:
-            file_path = sys.argv[1].strip()
-            if file_path.endswith(".py"):
-                number_of_lines = check_lines(file_path)
-                print(number_of_lines)
-            else:
-                sys.exit("Not a Python file")
+        check_command_arguments()
+        
     except FileNotFoundError:
         sys.exit("File does not exist")
+
+def check_command_arguments():
+    if len(sys.argv) < 2:
+            sys.exit("Too few command-line arguments")
+    elif len(sys.argv) > 2:
+        sys.exit("Too many command-line arguments")
+    else:
+        file_path = sys.argv[1].strip()
+        if file_path.endswith(".py"):
+            print(check_lines(file_path))
+        else:
+            sys.exit("Not a Python file")
 
 def check_lines(file_path):
     count = 0
     with open(file_path, "r") as file:
         for line in file:
-            if len(line.strip()) == 0 or line.strip().startswith("#"):
+            line = line.strip()
+            if len(line) == 0 or line.startswith("#"):
                 continue
             else:
                 count += 1
