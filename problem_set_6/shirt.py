@@ -13,7 +13,7 @@ def main():
         sys.exit("Input does not exist")
 
     # Open shirt
-    shirt_file = Image.open("shirt.png")
+    shirt_file = Image.open("images\\shirt.png")
     # Get the size of the shirt
     shirt_size = shirt_file.size
     # resize muppet image to fit the shirt
